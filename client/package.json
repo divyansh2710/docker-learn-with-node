@@ -8,6 +8,9 @@
     "react-scripts": "3.4.0",
     "react-router-dom": "4.3.1",
     "jest-dom": "4.0.0",
+    "testing-library": "0.0.2",
+    "@testing-library/react": "9.4.1",
+    "@testing-library/jest-dom": "5.1.1",
     "axios": "0.18.0"
   },
   "scripts": {
