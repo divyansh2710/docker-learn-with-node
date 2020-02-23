@@ -1,0 +1,29 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t divyansh/react-test -f ./client/Dockerfile.dev ./client
+
+# run the image and default command will be run test -- --coverage is to ensure that the tests exits
+
+script:
+  - docker run divyansh/react-test npm test -- --coverage  
+
+#once all tests passes create images and push to docker hub
+after_success:
+  - docker build -t divyansh/multi-client ./client
+  - docker build -t divyansh/multi-server ./server
+  - docker build -t divyansh/multi-worker ./worker
+  - docker build -t divyansh/multi-nginx ./nginx
+# Login to docker hub
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+# push images to docker hub
+
+  - docker push divyansh/multi-client
+  - docker push divyansh/multi-server
+  - docker push divyansh/multi-worker
+  - docker push divyansh/multi-nginx 
+
