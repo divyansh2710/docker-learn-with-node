@@ -11,7 +11,7 @@
     "testing-library": "0.0.2",
     "@testing-library/react": "9.4.1",
     "@testing-library/jest-dom": "5.1.1",
-    "axios": "0.18.0"
+    "axios": "1.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
